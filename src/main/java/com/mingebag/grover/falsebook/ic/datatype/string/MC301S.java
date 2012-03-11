@@ -11,6 +11,7 @@ import org.bukkit.Note;
 import org.bukkit.Note.Tone;
 import org.bukkit.block.Block;
 import org.bukkit.block.NoteBlock;
+import org.bukkit.craftbukkit.LoggerOutputStream;
 
 public class MC301S extends BaseDataChip {
     public MC301S() {
@@ -45,32 +46,31 @@ public class MC301S extends BaseDataChip {
                 
                 String instrumentStr = signBlock.getLine(2);
                 Instrument instrument = Instrument.PIANO;
-                try {
+                //try {
                     instrument = Instrument.valueOf(instrumentStr.toUpperCase());
-                }
-                catch(Exception e) {
+                //}
+                //catch(Exception e) {
                     
-                }
+                //}
                 
                 char octave = str.charAt(0);
                 char tone = str.charAt(1);
                 
                 boolean isSharp = false;
                 boolean isFlat = false;
-                if(str.length() > 2)
-                {
+                if(str.length() > 2) {
                     char sharpFlat = str.charAt(2);
                     isSharp = sharpFlat == '#';
                     isFlat = sharpFlat == '-';
                 }
                 
                 int octaveValue = 0;
-                try {
+                //try {
                     octaveValue = Integer.parseInt(String.valueOf(octave));
-                }
-                catch(Exception e) {
+                //}
+                //catch(Exception e) {
                     
-                }
+                //}
                 
                 if(octaveValue < 0)
                     octaveValue = 0;
@@ -78,12 +78,12 @@ public class MC301S extends BaseDataChip {
                     octaveValue = 2;
 
                 Tone toneValue = Tone.C;
-                try {
+                //try {
                     toneValue = Tone.valueOf(String.valueOf(tone).toUpperCase());
-                }
-                catch(Exception e) {
+                //}
+                //catch(Exception e) {
                     
-                }
+                //}
                 
                 Note note = null;
                 if(isSharp)
