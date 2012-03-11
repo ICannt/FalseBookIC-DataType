@@ -28,9 +28,9 @@ public class MC300S extends BaseDataChip {
             BaseData baseRight = this.getDataRight(signBlock);
             
             // Check types.
-            if(baseCenter != null && baseCenter.getType() == DataTypes.STRING.ordinal() &&
-                baseLeft != null && baseLeft.getType() == DataTypes.NUMBER.ordinal() &&
-                baseRight != null && baseRight.getType() == DataTypes.NUMBER.ordinal()) {
+            if(baseCenter != null && baseCenter.getType() == DataTypes.STRING &&
+                baseLeft != null && baseLeft.getType() == DataTypes.NUMBER &&
+                baseRight != null && baseRight.getType() == DataTypes.NUMBER) {
                 
                 StringData center = (StringData)baseCenter;
                 NumberData left = (NumberData)baseLeft;

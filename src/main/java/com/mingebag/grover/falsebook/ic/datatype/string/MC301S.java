@@ -35,8 +35,6 @@ public class MC301S extends BaseDataChip {
                     baseCenter.getType() == DataTypes.STRING &&
                     blockMat.equals(Material.NOTE_BLOCK)) {
                 
-                this.core.getLogger().info("301s: center is string and mat is note");
-                
                 StringData center = (StringData)baseCenter;
                 
                 String str = center.getString();
@@ -47,18 +45,14 @@ public class MC301S extends BaseDataChip {
                 str = str.toLowerCase();
                 str = str.trim();
                 
-                this.core.getLogger().info("301s: str is " + str);
-                
                 String instrumentStr = signBlock.getLine(2);
-                this.core.getLogger().info("301s: ins is " + instrumentStr);
                 
                 Instrument instrument = Instrument.PIANO;
-                //try {
+                try {
                     instrument = Instrument.valueOf(instrumentStr.toUpperCase());
-                //}
-                //catch(Exception e) {
-                    
-                //}
+                }
+                catch(Exception e) {
+                }
                 
                 char octave = str.charAt(0);
                 char tone = str.charAt(1);
@@ -72,12 +66,11 @@ public class MC301S extends BaseDataChip {
                 }
                 
                 int octaveValue = 0;
-                //try {
+                try {
                     octaveValue = Integer.parseInt(String.valueOf(octave));
-                //}
-                //catch(Exception e) {
-                    
-                //}
+                }
+                catch(Exception e) {
+                }
                 
                 if(octaveValue < 0)
                     octaveValue = 0;
@@ -85,12 +78,11 @@ public class MC301S extends BaseDataChip {
                     octaveValue = 2;
 
                 Tone toneValue = Tone.C;
-                //try {
+                try {
                     toneValue = Tone.valueOf(String.valueOf(tone).toUpperCase());
-                //}
-                //catch(Exception e) {
-                    
-                //}
+                }
+                catch(Exception e) {
+                }
                 
                 Note note = null;
                 if(isSharp)
@@ -101,13 +93,7 @@ public class MC301S extends BaseDataChip {
                     note = Note.natural(octaveValue, toneValue);
 
                 NoteBlock noteBlock = (NoteBlock)block.getState();
-                boolean success = noteBlock.play(instrument, note);
-                
-                this.core.getLogger().info("301s: oct " + octaveValue + 
-                        " tone " + toneValue.toString() + 
-                        " isSharp " + isSharp +
-                        " isFlat " + isFlat +
-                        " played " + success);
+                noteBlock.play(instrument, note);
             }
         }
     }
