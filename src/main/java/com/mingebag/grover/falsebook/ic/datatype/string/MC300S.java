@@ -7,7 +7,7 @@ import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
 import com.grover.mingebag.ic.*;
 
 public class MC300S extends BaseDataChip {
-    MC300S() {
+    public MC300S() {
         this.ICName = "SUB STRING";
         this.ICNumber = "MC300S";
         setICGroup(ICGroup.CUSTOM_0);

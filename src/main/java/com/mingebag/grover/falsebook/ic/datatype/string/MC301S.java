@@ -13,7 +13,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.NoteBlock;
 
 public class MC301S extends BaseDataChip {
-    MC301S() {
+    public MC301S() {
         this.ICName = "PLAY NOTE";
         this.ICNumber = "MC301S";
         setICGroup(ICGroup.CUSTOM_0);
