@@ -18,8 +18,9 @@ public class MC300S extends BaseDataChip {
     }
     
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-        boolean hasChanged = previousInputs.isInputOneLow() || previousInputs.isInputTwoLow() || previousInputs.isInputThreeLow();
-        hasChanged = hasChanged && currentInputs.isInputOneHigh() && currentInputs.isInputTwoHigh() && currentInputs.isInputThreeHigh();
+        boolean hasChanged = previousInputs.isInputOneLow() && currentInputs.isInputOneHigh();
+        hasChanged = hasChanged || (previousInputs.isInputTwoLow() && currentInputs.isInputTwoHigh());
+        hasChanged = hasChanged || (previousInputs.isInputThreeLow() && currentInputs.isInputThreeHigh());
         
         if(hasChanged) {
             
