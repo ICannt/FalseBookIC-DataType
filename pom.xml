@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.icannt</groupId>
     <artifactId>falsebookic-datatype</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <name>FalseBookIC-DataType</name>
     <description></description>
     <properties>
@@ -41,12 +41,12 @@
         <dependency>
             <groupId>org.icannt</groupId>
             <artifactId>falsebookcore</artifactId>
-            <version>1.0</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 		<dependency>
             <groupId>org.icannt</groupId>
             <artifactId>falsebookic</artifactId>
-            <version>1.0</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
