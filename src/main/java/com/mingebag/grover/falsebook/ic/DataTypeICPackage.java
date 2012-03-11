@@ -31,5 +31,6 @@ public class DataTypeICPackage extends ExternalICPackage
     addIC(MC001S.class);
     addIC(MC300S.class);
     addIC(MC301S.class);
+    
   }
 }
