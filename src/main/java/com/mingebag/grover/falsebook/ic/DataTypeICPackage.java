@@ -5,6 +5,7 @@ import com.mingebag.grover.falsebook.ic.datatype.data.MC000D;
 import com.mingebag.grover.falsebook.ic.datatype.data.MC001D;
 import com.mingebag.grover.falsebook.ic.datatype.data.MC002D;
 import com.mingebag.grover.falsebook.ic.datatype.data.MC003D;
+import com.mingebag.grover.falsebook.ic.datatype.number.MC001I;
 import com.mingebag.grover.falsebook.ic.datatype.string.MC001S;
 import com.mingebag.grover.falsebook.ic.datatype.string.MC300S;
 import com.mingebag.grover.falsebook.ic.datatype.string.MC301S;
@@ -21,6 +22,9 @@ public class DataTypeICPackage extends ExternalICPackage
     addIC(MC001D.class);
     addIC(MC002D.class);
     addIC(MC003D.class);
+    
+    // Number IC's
+    addIC(MC001I.class);
     
     // String IC's
     addIC(MC001S.class);
