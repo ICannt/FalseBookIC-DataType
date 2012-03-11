@@ -29,7 +29,8 @@ public class MC301S extends BaseDataChip {
             Block block = getICBlock(signBlock).add(0, 1, 0).getBlock();
             Material blockMat = block.getType();
             
-            if(baseCenter.getType() == DataTypes.STRING.ordinal() &&
+            if(baseCenter != null &&
+                    baseCenter.getType() == DataTypes.STRING.ordinal() &&
                     blockMat.equals(Material.NOTE_BLOCK)) {
                 
                 StringData center = (StringData)baseCenter;
