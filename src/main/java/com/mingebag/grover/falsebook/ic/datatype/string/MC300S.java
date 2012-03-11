@@ -11,7 +11,7 @@ public class MC300S extends BaseDataChip {
         this.ICName = "SUB STRING";
         this.ICNumber = "MC300S";
         setICGroup(ICGroup.CUSTOM_0);
-        this.chipState = new BaseChip(true, false, false, "String", "Index", "Count");
+        this.chipState = new BaseChip(true, true, true, "String", "Index", "Count");
         this.chipState.setOutputs("String", "", "");
         this.chipState.setLines("", "");
         this.ICDescription = "This pulses a substring when clocked.";
