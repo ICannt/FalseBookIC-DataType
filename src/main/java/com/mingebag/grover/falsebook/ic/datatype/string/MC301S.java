@@ -37,7 +37,7 @@ public class MC301S extends BaseDataChip {
                 
                 String str = center.getString();
                 
-                if(str.length() < 3)
+                if(str.length() < 2)
                     return;
                 
                 str = str.toLowerCase();
