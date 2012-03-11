@@ -31,9 +31,11 @@ public class MCDEBUG extends BaseDataChip {
             else if(data.getType() == DataTypes.STRING) {
                 StringData sData = (StringData)data;
                 String str = "s=" + sData.getString();
-                signBlock.setLine(2, str.substring(0, 15));
-                if(str.length() > 15) {
-                    signBlock.setLine(3, str.substring(15, 15));
+                int len = str.length();
+                
+                signBlock.setLine(2, str.substring(0, len));
+                if(len > 15) {
+                    signBlock.setLine(3, str.substring(15, len));
                 }
                 else {
                     signBlock.setLine(3, "");
