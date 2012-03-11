@@ -4,6 +4,7 @@ import org.bukkit.block.Sign;
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
+import com.bukkit.gemo.utils.ICUtils;
 import com.grover.mingebag.ic.*;
 import org.bukkit.Instrument;
 import org.bukkit.Material;
@@ -31,8 +32,10 @@ public class MC301S extends BaseDataChip {
             Material blockMat = block.getType();
             
             if(baseCenter != null &&
-                    baseCenter.getType() == DataTypes.STRING.ordinal() &&
+                    baseCenter.getType() == DataTypes.STRING &&
                     blockMat.equals(Material.NOTE_BLOCK)) {
+                
+                this.core.getLogger().info("301s: center is string and mat is note");
                 
                 StringData center = (StringData)baseCenter;
                 
@@ -40,11 +43,15 @@ public class MC301S extends BaseDataChip {
                 
                 if(str.length() < 2)
                     return;
-                
+
                 str = str.toLowerCase();
                 str = str.trim();
                 
+                this.core.getLogger().info("301s: str is " + str);
+                
                 String instrumentStr = signBlock.getLine(2);
+                this.core.getLogger().info("301s: ins is " + instrumentStr);
+                
                 Instrument instrument = Instrument.PIANO;
                 //try {
                     instrument = Instrument.valueOf(instrumentStr.toUpperCase());
@@ -92,9 +99,15 @@ public class MC301S extends BaseDataChip {
                     note = Note.flat(octaveValue, toneValue);
                 else
                     note = Note.natural(octaveValue, toneValue);
+
+                NoteBlock noteBlock = (NoteBlock)block.getState();
+                boolean success = noteBlock.play(instrument, note);
                 
-                NoteBlock noteBlock = (NoteBlock)block;
-                noteBlock.play(instrument, note);
+                this.core.getLogger().info("301s: oct " + octaveValue + 
+                        " tone " + toneValue.toString() + 
+                        " isSharp " + isSharp +
+                        " isFlat " + isFlat +
+                        " played " + success);
             }
         }
     }
