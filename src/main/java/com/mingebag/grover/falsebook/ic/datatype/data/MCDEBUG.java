@@ -47,6 +47,8 @@ public class MCDEBUG extends BaseDataChip {
                 //ItemData nData = (ItemData)data;
                 signBlock.setLine(2, "item");
             }
+            
+            signBlock.update(true);
         }
     }
 }
