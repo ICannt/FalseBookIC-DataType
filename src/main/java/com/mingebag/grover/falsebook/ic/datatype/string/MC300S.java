@@ -9,7 +9,7 @@ import com.grover.mingebag.ic.*;
 public class MC300S extends BaseDataChip {
     public MC300S() {
         this.ICName = "SUB STRING";
-        this.ICNumber = "MC300S";
+        this.ICNumber = "[MC300S]";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, true, true, "String", "Index", "Count");
         this.chipState.setOutputs("String", "", "");
