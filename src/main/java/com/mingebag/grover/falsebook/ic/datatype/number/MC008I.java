@@ -3,21 +3,18 @@ package com.mingebag.grover.falsebook.ic.datatype.number;
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
-import com.grover.mingebag.ic.BaseData;
-import com.grover.mingebag.ic.BaseDataChip;
-import com.grover.mingebag.ic.DataTypes;
-import com.grover.mingebag.ic.NumberData;
+import com.grover.mingebag.ic.*;
 import org.bukkit.block.Sign;
 
-public class MC002I extends BaseDataChip {
-    public MC002I() {
-        this.ICName = "BINARY OR";
-        this.ICNumber = "[MC002I]";
+public class MC008I extends BaseDataChip {
+    public MC008I() {
+        this.ICName = "DIV";
+        this.ICNumber = "[MC008I]";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(false, true, true, "", "A", "B");
         this.chipState.setOutputs("Value", "", "");
         this.chipState.setLines("", "");
-        this.ICDescription = "Binary OR of two inputs.";
+        this.ICDescription = "Left div Right.";
     }
     
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
@@ -33,10 +30,17 @@ public class MC002I extends BaseDataChip {
                 int a = ((NumberData)dataA).getInt();
                 int b = ((NumberData)dataB).getInt();
                 
-                int c = a | b;
-                NumberData output = new NumberData(c);
-                
-                this.outputData(output, output.getType(), signBlock, 2, 2);
+                try {
+                    int c = a / b;
+                    NumberData output = new NumberData(c);
+
+                    this.outputData(output, output.getType(), signBlock, 2, 2);
+                }
+                catch(Exception e) {
+                    StringData output = new StringData("Bad number.");
+
+                    this.outputData(output, output.getType(), signBlock, 2, 2);
+                }
             }
         }
     }

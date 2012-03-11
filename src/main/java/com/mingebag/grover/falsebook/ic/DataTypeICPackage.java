@@ -2,11 +2,8 @@ package com.mingebag.grover.falsebook.ic;
 
 import com.bukkit.gemo.FalseBook.IC.ICs.ExternalICPackage;
 import com.mingebag.grover.falsebook.ic.datatype.data.*;
-import com.mingebag.grover.falsebook.ic.datatype.number.MC001I;
-import com.mingebag.grover.falsebook.ic.datatype.number.MC002I;
-import com.mingebag.grover.falsebook.ic.datatype.string.MC001S;
-import com.mingebag.grover.falsebook.ic.datatype.string.MC300S;
-import com.mingebag.grover.falsebook.ic.datatype.string.MC301S;
+import com.mingebag.grover.falsebook.ic.datatype.number.*;
+import com.mingebag.grover.falsebook.ic.datatype.string.*;
 
 public class DataTypeICPackage extends ExternalICPackage
 {
@@ -26,6 +23,13 @@ public class DataTypeICPackage extends ExternalICPackage
     // Number IC's
     addIC(MC001I.class);
     addIC(MC002I.class);
+    addIC(MC003I.class);
+    addIC(MC004I.class);
+    addIC(MC005I.class);
+    addIC(MC006I.class);
+    addIC(MC007I.class);
+    addIC(MC008I.class);
+    addIC(MC009I.class);
     
     // String IC's
     addIC(MC001S.class);

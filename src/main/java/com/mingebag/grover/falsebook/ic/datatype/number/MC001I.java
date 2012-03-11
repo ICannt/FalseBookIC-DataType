@@ -30,7 +30,7 @@ public class MC001I extends BaseDataChip {
             }
             
             NumberData data = new NumberData(value);
-            this.outputData(data, data.getType(), signBlock, 2, 20);
+            this.outputData(data, data.getType(), signBlock, 2, 2);
         }
     }
 }

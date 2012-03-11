@@ -9,15 +9,15 @@ import com.grover.mingebag.ic.DataTypes;
 import com.grover.mingebag.ic.NumberData;
 import org.bukkit.block.Sign;
 
-public class MC002I extends BaseDataChip {
-    public MC002I() {
-        this.ICName = "BINARY OR";
-        this.ICNumber = "[MC002I]";
+public class MC007I extends BaseDataChip {
+    public MC007I() {
+        this.ICName = "MUL";
+        this.ICNumber = "[MC007I]";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(false, true, true, "", "A", "B");
         this.chipState.setOutputs("Value", "", "");
         this.chipState.setLines("", "");
-        this.ICDescription = "Binary OR of two inputs.";
+        this.ICDescription = "Left mul Right.";
     }
     
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
@@ -33,7 +33,7 @@ public class MC002I extends BaseDataChip {
                 int a = ((NumberData)dataA).getInt();
                 int b = ((NumberData)dataB).getInt();
                 
-                int c = a | b;
+                int c = a * b;
                 NumberData output = new NumberData(c);
                 
                 this.outputData(output, output.getType(), signBlock, 2, 2);

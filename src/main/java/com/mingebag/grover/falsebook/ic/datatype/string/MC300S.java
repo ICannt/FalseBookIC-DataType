@@ -58,7 +58,7 @@ public class MC300S extends BaseDataChip {
                 str = str.substring(offset, offset + count);
                 
                 StringData data = new StringData(str);
-                this.outputData(data, data.getType(), signBlock, 2, 20);
+                this.outputData(data, data.getType(), signBlock, 2, 2);
             }
         }
     }
