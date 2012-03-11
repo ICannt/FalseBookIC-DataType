@@ -23,10 +23,12 @@ public class MCDEBUG extends BaseDataChip {
             
             if (data == null) {
                 signBlock.setLine(2, currentInputs.isInputOneHigh() ? "true" : "false");
+                signBlock.setLine(3, "");
             }
             else if(data.getType() == DataTypes.NUMBER) {
                 NumberData nData = (NumberData)data;
                 signBlock.setLine(2, "n=" + nData.getInt());
+                signBlock.setLine(3, "");
             }
             else if(data.getType() == DataTypes.STRING) {
                 StringData sData = (StringData)data;
@@ -44,10 +46,12 @@ public class MCDEBUG extends BaseDataChip {
             else if(data.getType() == DataTypes.PLAYER) {
                 PlayerData nData = (PlayerData)data;
                 signBlock.setLine(2, "player");
+                signBlock.setLine(3, "");
             }
             else if(data.getType() == DataTypes.ITEM) {
                 //ItemData nData = (ItemData)data;
                 signBlock.setLine(2, "item");
+                signBlock.setLine(3, "");
             }
             
             signBlock.update(true);
