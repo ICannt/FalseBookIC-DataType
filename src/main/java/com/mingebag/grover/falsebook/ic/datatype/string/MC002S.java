@@ -28,11 +28,11 @@ public class MC002S extends BaseDataChip {
 		BaseData dataRight = getDataRight(signBlock);
 		String out = null;
 		
-		if(currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow())
+		if(currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow() && dataLeft != null)
 			if(dataLeft.getType() == DataTypes.STRING)
 				input1 = ((StringData) dataLeft).getString();
 		
-		if(currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow())
+		if(currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow() && dataRight != null)
 			if(dataRight.getType() == DataTypes.STRING)
 				input2 = ((StringData) dataRight).getString();
 		
