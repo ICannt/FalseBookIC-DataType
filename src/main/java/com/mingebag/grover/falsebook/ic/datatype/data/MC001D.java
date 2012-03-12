@@ -34,7 +34,6 @@ public class MC001D extends BaseDataChip {
 			    	outputData(data, signBlock, 2, 0);
 			    }
 			}, 2);
-			
 		}
 	}
 }

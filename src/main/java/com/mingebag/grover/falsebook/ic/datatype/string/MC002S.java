@@ -4,7 +4,9 @@ import org.bukkit.block.Sign;
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
+import com.grover.mingebag.ic.BaseData;
 import com.grover.mingebag.ic.BaseDataChip;
+import com.grover.mingebag.ic.DataTypes;
 import com.grover.mingebag.ic.StringData;
 
 public class MC002S extends BaseDataChip {
@@ -22,12 +24,17 @@ public class MC002S extends BaseDataChip {
 	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
 		String input1 = null;
 		String input2 = null;
+		BaseData dataLeft = getDataLeft(signBlock);
+		BaseData dataRight = getDataRight(signBlock);
 		String out = null;
+		
 		if(currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow())
-			input1 = ((StringData) getDataLeft(signBlock)).getString();
+			if(dataLeft.getType() == DataTypes.STRING)
+				input1 = ((StringData) dataLeft).getString();
 		
 		if(currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow())
-			input2 = ((StringData) getDataRight(signBlock)).getString();
+			if(dataRight.getType() == DataTypes.STRING)
+				input2 = ((StringData) dataRight).getString();
 		
 		if(input1 != null && input2 != null) {
 			out = input1 + input2;
