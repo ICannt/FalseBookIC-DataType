@@ -34,7 +34,7 @@ public class MC003P extends BaseDataChip {
 			BaseData data = getData(signBlock);
 			if(data.getType() == DataTypes.PLAYER) {
 			PlayerData player = (PlayerData) data;
-			this.outputData(new ItemData(player.getPlayer().getItemInHand()), signBlock, 2, 2);
+			this.outputData(new ItemData(player.getPlayer().getItemInHand()), signBlock, 2);
 			}
 		}
 	}

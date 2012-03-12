@@ -1,5 +1,7 @@
 package com.mingebag.grover.falsebook.ic.datatype.string;
 
+import java.util.ArrayList;
+
 import org.bukkit.block.Sign;
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
@@ -16,13 +18,29 @@ public class MC001S extends BaseDataChip {
 		this.chipState.setOutputs("String", "", "");
 		this.chipState.setLines("", "");
 		this.ICDescription = "This pulses a string when clocked.";
+		this.setICSignDepth((byte) 5);
 	}
 
 
-	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
+	public void Execute(ArrayList<Sign> signBlocks, InputState currentInputs, InputState previousInputs) {
 		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
-			StringData data = new StringData(signBlock.getLine(2) + signBlock.getLine(3));
-			this.outputData(data, signBlock, 2, 2);
+			String string = "";
+			Sign ic = signBlocks.get(0);
+			signBlocks.remove(0);
+			int max = signBlocks.size();
+			if(max > 5)
+				max = 5;
+			
+			for(int i = 0; i < max; i++) {
+				Sign sign = signBlocks.get(i);
+				string += sign.getLine(0);
+				string += sign.getLine(1);
+				string += sign.getLine(2);
+				string += sign.getLine(3);
+			}
+			
+			StringData data = new StringData(string);
+			this.outputData(data, ic, 2);
 		}
 	}
 }

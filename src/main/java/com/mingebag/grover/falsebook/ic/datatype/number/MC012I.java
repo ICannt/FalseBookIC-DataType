@@ -30,7 +30,7 @@ public class MC012I extends BaseDataChip {
             	int sign = 1;
                 if(((NumberData) data).getInt() < 0)
                     sign = -1;
-            	outputData(new NumberData(sign), signBlock, 2, 2);
+            	outputData(new NumberData(sign), signBlock, 2);
             }
         }
     }

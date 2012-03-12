@@ -5,7 +5,6 @@ import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
 import com.grover.mingebag.ic.BaseDataChip;
 import com.grover.mingebag.ic.NumberData;
-import com.grover.mingebag.ic.StringData;
 import org.bukkit.block.Sign;
 
 public class MC001I extends BaseDataChip {
@@ -24,13 +23,13 @@ public class MC001I extends BaseDataChip {
             
             int value = 0;
             try {
-                value = Integer.parseInt(signBlock.getLine(2));
+                value = Integer.parseInt(signBlock.getLine(3));
             }
             catch(Exception e) {
             }
             
             NumberData data = new NumberData(value);
-            this.outputData(data, signBlock, 2, 2);
+            this.outputData(data, signBlock, 2);
         }
     }
 }

@@ -25,7 +25,7 @@ public class MC005P extends BaseDataChip {
 	}
 
 	public void checkCreation(SignChangeEvent event) {
-		String value = event.getLine(2).toUpperCase();
+		String value = event.getLine(3).toUpperCase();
 		if(value.length() > 0) {
 			if((value.equals("HEALTH") || value.equals("XP") || value.equals("LEVEL") || value.equals("HUNGER")))
 				return;
@@ -38,27 +38,27 @@ public class MC005P extends BaseDataChip {
 			BaseData data = getData(signBlock);
 			if(data.getType() == DataTypes.PLAYER) {
 				PlayerData pdata = (PlayerData) data;
-				String value = signBlock.getLine(2).toUpperCase();
+				String value = signBlock.getLine(3).toUpperCase();
 				
 				if(value.length() > 0) {
 					
 					if(value.equals("HEALTH")) {
-						this.outputData(new NumberData(pdata.getPlayer().getHealth()), signBlock, 2, 2);
+						this.outputData(new NumberData(pdata.getPlayer().getHealth()), signBlock, 2);
 						return;
 					}
 					
 					if(value.equals("XP")) {
-						this.outputData(new NumberData(pdata.getPlayer().getTotalExperience()), signBlock, 2, 2);
+						this.outputData(new NumberData(pdata.getPlayer().getTotalExperience()), signBlock, 2);
 						return;
 					}
 					
 					if(value.equals("LEVEL")) {
-						this.outputData(new NumberData(pdata.getPlayer().getLevel()), signBlock, 2, 2);
+						this.outputData(new NumberData(pdata.getPlayer().getLevel()), signBlock, 2);
 						return;
 					}
 					
 					if(value.equals("HUNGER")) {
-						this.outputData(new NumberData(pdata.getPlayer().getFoodLevel()), signBlock, 2, 2);
+						this.outputData(new NumberData(pdata.getPlayer().getFoodLevel()), signBlock, 2);
 						return;
 					}
 				}

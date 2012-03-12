@@ -25,7 +25,7 @@ public class MC05IT extends BaseDataChip {
 	}
     
     public void checkCreation(SignChangeEvent event) {
-        String line = event.getLine(2);
+        String line = event.getLine(3);
         
         String[] numbers = line.split(",");
         
@@ -75,7 +75,7 @@ public class MC05IT extends BaseDataChip {
             
             if(stack.hasNext()) {
                 ItemData data = new ItemData(stack.next());
-                this.outputData(data, signBlock, 2, 2);
+                this.outputData(data, signBlock, 2);
             }
 		}
 	}

@@ -45,7 +45,7 @@ public class MC003S extends BaseDataChip {
 			}
 			
 			if(out != null)
-				this.outputData(new StringData(out), signBlock, 2, 2);
+				this.outputData(new StringData(out), signBlock, 2);
 		}
 	}
 }

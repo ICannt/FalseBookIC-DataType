@@ -11,15 +11,14 @@ import com.grover.mingebag.ic.BaseDataChip;
 
 public class MC001D extends BaseDataChip {
 	public MC001D() {
-		this.ICName = "DATATYPE TOGGLE";
+		this.ICName = "DATATYPE DELAY";
 		this.ICNumber = "[MC001D]";
 		setICGroup(ICGroup.CUSTOM_0);
 		this.chipState = new BaseChip(true, false, false, "DataType", "", "");
 		this.chipState.setOutputs("Input Data", "", "");
 		this.chipState.setLines("", "");
-		this.ICDescription = "This keep the datatype active until a new one arrives.";
+		this.ICDescription = "This delays the datatype";
 	}
-
 
 	
 	public void Execute(final Sign signBlock, InputState currentInputs, InputState previousInputs) {
@@ -28,12 +27,21 @@ public class MC001D extends BaseDataChip {
 			if(this.getData(signBlock) == null) {
 				return;
 			}
+			
+			int delay = 2;
+			if(signBlock.getLine(3).length() > 0) {
+				try {
+					delay = Integer.parseInt(signBlock.getLine(3));
+				} catch(Exception e) {
+				}
+			}
+
 			final BaseData data = getData(signBlock);
 			this.core.getServer().getScheduler().scheduleSyncDelayedTask(this.core, new Runnable() {
 			    public void run() {
-			    	outputData(data, signBlock, 2, 0);
+			    	outputData(data, signBlock, 2);
 			    }
-			}, 2);
+			}, delay);
 		}
 	}
 }

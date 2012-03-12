@@ -27,7 +27,7 @@ public class MC002P extends BaseDataChip {
 			BaseData data = getData(signBlock);
 			if(data.getType() == DataTypes.PLAYER) {
 				PlayerData player = (PlayerData) data;
-				this.outputData(new StringData(player.getPlayer().getDisplayName()), signBlock, 2, 2);
+				this.outputData(new StringData(player.getPlayer().getDisplayName()), signBlock, 2);
 			}
 
 		}

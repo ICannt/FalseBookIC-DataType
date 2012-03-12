@@ -14,7 +14,7 @@ public class MC002D extends BaseDataChip {
 		setICGroup(ICGroup.CUSTOM_0);
 		this.chipState = new BaseChip(true, false, false, "DataType", "", "");
 		this.chipState.setOutputs("Input Data", "", "");
-		this.chipState.setLines("delay", "");
+		this.chipState.setLines("", "");
 		this.ICDescription = "This pulses the datatype";
 	}
 
@@ -22,17 +22,11 @@ public class MC002D extends BaseDataChip {
 	
 	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
 		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
-			if(this.getData(signBlock) == null) {
+			
+			if(this.getData(signBlock) == null)
 				return;
-			}
-			int pulse = 20;
-			if(!signBlock.getLine(2).equals("")) {
-				try {
-					pulse = Integer.parseInt(signBlock.getLine(2));
-				} catch (Exception e) {
-				}
-			}
-			this.outputData(this.getData(signBlock), signBlock, 2, pulse);
+			
+			this.outputData(this.getData(signBlock), signBlock, 2);
 		}
 	}
 }

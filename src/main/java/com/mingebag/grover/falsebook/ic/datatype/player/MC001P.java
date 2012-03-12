@@ -21,7 +21,7 @@ public class MC001P extends BaseDataChip {
 	}
 
 	public void onRightClick(Player player, Sign signBlock) {
-		this.outputData(new PlayerData(player), signBlock, 2, 2);
+		this.outputData(new PlayerData(player), signBlock, 2);
 	}
 
 }

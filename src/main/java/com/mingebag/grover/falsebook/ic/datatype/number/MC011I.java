@@ -29,7 +29,7 @@ public class MC011I extends BaseDataChip {
             
             if(data.getType() == DataTypes.NUMBER) {
             	int rand = new Random().nextInt(((NumberData) data).getInt());
-            	outputData(new NumberData(rand), signBlock, 2, 2);
+            	outputData(new NumberData(rand), signBlock, 2);
             }
         }
     }

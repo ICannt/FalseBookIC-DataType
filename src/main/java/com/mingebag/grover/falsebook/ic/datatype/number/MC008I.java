@@ -34,12 +34,12 @@ public class MC008I extends BaseDataChip {
                     int c = a / b;
                     NumberData output = new NumberData(c);
 
-                    this.outputData(output, signBlock, 2, 2);
+                    this.outputData(output, signBlock, 2);
                 }
                 catch(Exception e) {
                     StringData output = new StringData("Bad number.");
 
-                    this.outputData(output, signBlock, 2, 2);
+                    this.outputData(output, signBlock, 2);
                 }
             }
         }
