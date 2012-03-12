@@ -49,6 +49,6 @@ public class DataTypeICPackage extends ExternalICPackage
     addIC(MC02IT.class);
     addIC(MC03IT.class);
     addIC(MC04IT.class);
-    
+    addIC(MC05IT.class);
   }
 }

@@ -33,10 +33,12 @@ public class MC010I extends BaseDataChip {
                         output = new NumberData(Integer.parseInt(str));
                     }
                     else if(data.getType() == DataTypes.PLAYER) {
-                        output = new NumberData(1);
+                        PlayerData pData = (PlayerData)data;
+                        output = new NumberData(pData.getPlayer().getEntityId());
                     }
                     else if(data.getType() == DataTypes.ITEM) {
-                        output = new NumberData(1);
+                        ItemData iData = (ItemData)data;
+                        output = new NumberData(iData.getItem().getTypeId());
                     }
                 }
                 catch (Exception e) {

@@ -45,12 +45,12 @@ public class MCDEBUG extends BaseDataChip {
             }
             else if(data.getType() == DataTypes.PLAYER) {
                 PlayerData nData = (PlayerData)data;
-                signBlock.setLine(2, "player");
+                signBlock.setLine(2, "p=" + nData.getPlayer().getName());
                 signBlock.setLine(3, "");
             }
             else if(data.getType() == DataTypes.ITEM) {
-                //ItemData nData = (ItemData)data;
-                signBlock.setLine(2, "item");
+                ItemData iData = (ItemData)data;
+                signBlock.setLine(2, "item=" + iData.getItem().getType().toString());
                 signBlock.setLine(3, "");
             }
             
