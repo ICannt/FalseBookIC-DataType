@@ -33,10 +33,12 @@ public class DataTypeICPackage extends ExternalICPackage
     addIC(MC008I.class);
     addIC(MC009I.class);
     addIC(MC010I.class);
+    addIC(MC011I.class);
     
     // String IC's
     addIC(MC001S.class);
     addIC(MC002S.class);
+    addIC(MC003S.class);
     addIC(MC300S.class);
     addIC(MC301S.class);
     
