@@ -6,6 +6,7 @@ import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
 import com.bukkit.gemo.FalseBook.IC.ICs.Lever;
+import com.grover.mingebag.ic.BaseData;
 import com.grover.mingebag.ic.BaseDataChip;
 
 public class MC001D extends BaseDataChip {
@@ -21,13 +22,19 @@ public class MC001D extends BaseDataChip {
 
 
 	
-	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
+	public void Execute(final Sign signBlock, InputState currentInputs, InputState previousInputs) {
 		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
 			this.switchLever(Lever.BACK, signBlock, false);
 			if(this.getData(signBlock) == null) {
 				return;
 			}
-			this.outputData(this.getData(signBlock), signBlock, 2, 0);
+			final BaseData data = getData(signBlock);
+			this.core.getServer().getScheduler().scheduleSyncDelayedTask(this.core, new Runnable() {
+			    public void run() {
+			    	outputData(data, signBlock, 2, 0);
+			    }
+			}, 2);
+			
 		}
 	}
 }
