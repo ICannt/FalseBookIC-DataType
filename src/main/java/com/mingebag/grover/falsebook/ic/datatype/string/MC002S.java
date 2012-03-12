@@ -26,6 +26,7 @@ public class MC002S extends BaseDataChip {
 		if(currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow())
 			input1 = ((StringData) getDataLeft(signBlock)).getString();
 		
+		if(currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow())
 			input2 = ((StringData) getDataRight(signBlock)).getString();
 		
 		if(input1 != null && input2 != null) {
