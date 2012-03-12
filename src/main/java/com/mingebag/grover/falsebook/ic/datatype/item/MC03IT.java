@@ -27,6 +27,10 @@ public class MC03IT extends BaseDataChip {
 			BaseData data = getData(signBlock);
 			if(data.getType() == DataTypes.ITEM) {
 				ItemData item = (ItemData) data;
+				
+				if(item.getItem() == null)
+					return;
+				
 				this.outputData(new NumberData(item.getItem().getDurability()), signBlock, 2, 2);
 			}
 		}

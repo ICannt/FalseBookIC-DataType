@@ -13,7 +13,7 @@ import com.grover.mingebag.ic.NumberData;
 public class MC04IT extends BaseDataChip {
 	public MC04IT() {
 		this.ICName = "ITEM AMOUNT";
-		this.ICNumber = "[MC03IT]";
+		this.ICNumber = "[MC04IT]";
 		setICGroup(ICGroup.CUSTOM_0);
 		this.chipState = new BaseChip(true, false, false, "Item", "", "");
 		this.chipState.setOutputs("Int", "", "");
@@ -27,6 +27,10 @@ public class MC04IT extends BaseDataChip {
 			BaseData data = getData(signBlock);
 			if(data.getType() == DataTypes.ITEM) {
 				ItemData item = (ItemData) data;
+				
+				if(item.getItem() == null)
+					return;
+				
 				this.outputData(new NumberData(item.getItem().getAmount()), signBlock, 2, 2);
 			}
 		}
