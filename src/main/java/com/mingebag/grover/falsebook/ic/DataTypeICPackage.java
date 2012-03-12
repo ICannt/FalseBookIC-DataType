@@ -34,6 +34,7 @@ public class DataTypeICPackage extends ExternalICPackage
     addIC(MC009I.class);
     addIC(MC010I.class);
     addIC(MC011I.class);
+    addIC(MC012I.class);
     
     // String IC's
     addIC(MC001S.class);
