@@ -32,7 +32,7 @@ public class MC002D extends BaseDataChip {
 				} catch (Exception e) {
 				}
 			}
-			this.outputData(this.getData(signBlock), this.getData(signBlock).getType(), signBlock, 2, pulse);
+			this.outputData(this.getData(signBlock), signBlock, 2, pulse);
 		}
 	}
 }

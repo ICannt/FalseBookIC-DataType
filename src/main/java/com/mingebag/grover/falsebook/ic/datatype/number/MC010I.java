@@ -46,7 +46,7 @@ public class MC010I extends BaseDataChip {
             else {
                 output = new NumberData(1);
             }
-            this.outputData(output, output.getType(), signBlock, 2, 2);
+            this.outputData(output, signBlock, 2, 2);
         }
     }
 }

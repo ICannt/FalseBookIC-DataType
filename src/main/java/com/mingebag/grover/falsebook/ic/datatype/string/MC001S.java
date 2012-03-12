@@ -22,7 +22,7 @@ public class MC001S extends BaseDataChip {
 	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
 		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
 			StringData data = new StringData(signBlock.getLine(2) + signBlock.getLine(3));
-			this.outputData(data, data.getType(), signBlock, 2, 2);
+			this.outputData(data, signBlock, 2, 2);
 		}
 	}
 }

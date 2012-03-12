@@ -27,7 +27,7 @@ public class MC001D extends BaseDataChip {
 			if(this.getData(signBlock) == null) {
 				return;
 			}
-			this.outputData(this.getData(signBlock), this.getData(signBlock).getType(), signBlock, 2, 0);
+			this.outputData(this.getData(signBlock), signBlock, 2, 0);
 		}
 	}
 }

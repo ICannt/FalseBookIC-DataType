@@ -1,0 +1,3 @@
+name: FalseBookIC-DataType
+main: com.mingebag.grover.falsebook.ic.DataTypeICPackage
+version: ${project.version}

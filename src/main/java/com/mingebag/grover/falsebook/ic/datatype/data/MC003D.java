@@ -32,7 +32,7 @@ public class MC003D extends BaseDataChip {
 			
 			// Comparisons
 			if(input1.compare(input2, signBlock.getLine(2))) {
-					this.outputData(input1, input1.getType(), signBlock, 2, 2);
+					this.outputData(input1, signBlock, 2, 2);
 			}
 			
 		}

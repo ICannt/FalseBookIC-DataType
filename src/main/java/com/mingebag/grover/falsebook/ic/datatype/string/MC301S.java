@@ -4,7 +4,6 @@ import org.bukkit.block.Sign;
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
-import com.bukkit.gemo.utils.ICUtils;
 import com.grover.mingebag.ic.*;
 import org.bukkit.Instrument;
 import org.bukkit.Material;
@@ -12,7 +11,6 @@ import org.bukkit.Note;
 import org.bukkit.Note.Tone;
 import org.bukkit.block.Block;
 import org.bukkit.block.NoteBlock;
-import org.bukkit.craftbukkit.LoggerOutputStream;
 
 public class MC301S extends BaseDataChip {
     public MC301S() {
