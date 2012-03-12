@@ -9,38 +9,34 @@ import com.grover.mingebag.ic.BaseDataChip;
 import com.grover.mingebag.ic.DataTypes;
 import com.grover.mingebag.ic.ItemData;
 import com.grover.mingebag.ic.PlayerData;
-import com.grover.mingebag.ic.StringData;
 
 public class MC003P extends BaseDataChip {
 	public MC003P() {
+		this.ICName = "PLAYER ITEM IN HAND";
 		this.ICName = "PLAYER MESSAGE";
 		this.ICNumber = "[MC003P]";
 		setICGroup(ICGroup.CUSTOM_0);
+		this.chipState = new BaseChip(true, false, false, "Player", "", "");
+		this.chipState.setOutputs("Item", "", "");
 		this.chipState = new BaseChip(false, true, true, "", "player", "string");
 		this.chipState.setOutputs("", "", "");
 		this.chipState.setLines("", "");
+		this.ICDescription = "This pulses the item the player has in his hand";
 		this.ICDescription = "This sends a message to the player";
 	}
 
+		 
+
+		 
 
 	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-		if((currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow() || currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow())) {
-			BaseData basePlayer = getDataLeft(signBlock);
-			BaseData baseString = getDataRight(signBlock);
-			
-			if(basePlayer == null || baseString == null)
-				return;
-			
-			if(basePlayer.getType() != DataTypes.PLAYER || baseString.getType() != DataTypes.STRING)
-				return;
-			
-			PlayerData player = (PlayerData) basePlayer;
-			StringData string = (StringData) baseString;
-			
-			if(player.getPlayer() != null && string.getString().length() > 0) {
-				player.getPlayer().sendMessage(string.getString());
+		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
+			BaseData data = getData(signBlock);
+			if(data.getType() == DataTypes.PLAYER) {
+			PlayerData player = (PlayerData) data;
+			this.outputData(new ItemData(player.getPlayer().getItemInHand()), signBlock, 2, 2);
 			}
-
 		}
 	}
+		
 }
