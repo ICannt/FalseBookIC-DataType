@@ -1,6 +1,5 @@
 package com.mingebag.grover.falsebook.ic.datatype.number;
 
-import java.util.Random;
 
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
