@@ -17,29 +17,38 @@ public class MC002S extends BaseDataChip {
 		this.chipState = new BaseChip(false, true, true, "String", "String", "String");
 		this.chipState.setOutputs("String", "", "");
 		this.chipState.setLines("", "");
-		this.ICDescription = "This combines strings from left to right.";
+		this.ICDescription = "This combines strings from left to right or combines the input string with the string provided on line 4.";
 	}
 
 
 	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-		String input1 = null;
-		String input2 = null;
-		BaseData dataLeft = getDataLeft(signBlock);
-		BaseData dataRight = getDataRight(signBlock);
+		String inputLeft = null;
+		String inputRight = null;
 		String out = null;
+		String def = signBlock.getLine(3);
 		
-		if(currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow() && dataLeft != null)
-			if(dataLeft.getType() == DataTypes.STRING)
-				input1 = ((StringData) dataLeft).getString();
+		if(currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow()) {
+			BaseData dataLeft = getDataLeft(signBlock);
+			if(dataLeft != null)
+				if(dataLeft.getType() == DataTypes.STRING)
+					inputLeft = ((StringData) dataLeft).getString();
+		}
 		
-		if(currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow() && dataRight != null)
-			if(dataRight.getType() == DataTypes.STRING)
-				input2 = ((StringData) dataRight).getString();
+		if(currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
+			BaseData dataRight = getDataRight(signBlock);
+			if(dataRight != null)
+				if(dataRight.getType() == DataTypes.STRING)
+					inputRight = ((StringData) dataRight).getString();
+		}
 		
-		if(input1 != null && input2 != null) {
-			out = input1 + input2;
-		} else {
-			return;
+		if(inputLeft != null && inputRight != null)
+			out = inputLeft + inputRight;
+		
+		if(def.length() > 0 && (inputLeft != null || inputRight != null)) {
+			if(inputLeft != null)
+				out = inputLeft + def;
+			if(inputRight != null)
+				out = def + inputRight;
 		}
 		
 		this.outputData(new StringData(out), signBlock, 2);

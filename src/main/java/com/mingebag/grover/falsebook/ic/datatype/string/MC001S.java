@@ -24,14 +24,11 @@ public class MC001S extends BaseDataChip {
 
 	public void Execute(ArrayList<Sign> signBlocks, InputState currentInputs, InputState previousInputs) {
 		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
-			String string = "";
 			Sign ic = signBlocks.get(0);
 			signBlocks.remove(0);
-			int max = signBlocks.size();
-			if(max > 5)
-				max = 5;
+			String string = ic.getLine(3);
 			
-			for(int i = 0; i < max; i++) {
+			for(int i = 0; i < signBlocks.size(); i++) {
 				Sign sign = signBlocks.get(i);
 				string += sign.getLine(0);
 				string += sign.getLine(1);

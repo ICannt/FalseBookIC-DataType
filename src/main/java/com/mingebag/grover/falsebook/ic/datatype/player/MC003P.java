@@ -13,7 +13,7 @@ import com.grover.mingebag.ic.PlayerData;
 public class MC003P extends BaseDataChip {
 	public MC003P() {
 		this.ICName = "PLAYER ITEM IN HAND";
-		this.ICName = "PLAYER MESSAGE";
+		this.ICName = "PLAYER ITEM IN HAND";
 		this.ICNumber = "[MC003P]";
 		setICGroup(ICGroup.CUSTOM_0);
 		this.chipState = new BaseChip(true, false, false, "Player", "", "");
