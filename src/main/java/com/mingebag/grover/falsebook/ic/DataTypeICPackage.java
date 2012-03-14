@@ -14,26 +14,26 @@ public class DataTypeICPackage extends ExternalICPackage {
         setShowImportMessages(false);
 
         // DataType IC's
-        addIC(MCDEBUG.class);
+        addIC(DataCompare.class);
+        addIC(DataDebug.class);
+        addIC(DataDelay.class);
+        addIC(DataPulse.class);
+        addIC(DataRepeat.class);
 
-        addIC(MC000D.class);
-        addIC(MC001D.class);
-        addIC(MC002D.class);
-        addIC(MC003D.class);
 
         // Number IC's
-        addIC(MC001I.class);
-        addIC(MC002I.class);
-        addIC(MC003I.class);
-        addIC(MC004I.class);
-        addIC(MC005I.class);
-        addIC(MC006I.class);
-        addIC(MC007I.class);
-        addIC(MC008I.class);
-        addIC(MC009I.class);
-        addIC(MC010I.class);
-        addIC(MC011I.class);
-        addIC(MC012I.class);
+        addIC(IntOut.class);
+        addIC(IntBinaryOr.class);
+        addIC(IntBinaryAnd.class);
+        addIC(IntBinaryXOR.class);
+        addIC(IntAdd.class);
+        addIC(IntSub.class);
+        addIC(IntMultiply.class);
+        addIC(IntDivide.class);
+        addIC(IntMod.class);
+        addIC(IntCast.class);
+        addIC(IntRandom.class);
+        addIC(IntSign.class);
 
         // String IC's
         addIC(MC001S.class);
@@ -43,17 +43,17 @@ public class DataTypeICPackage extends ExternalICPackage {
         addIC(MC301S.class);
 
         // Player IC's
-        addIC(MC001P.class);
-        addIC(MC002P.class);
-        addIC(MC003P.class);
-        addIC(MC004P.class);
-        addIC(MC005P.class);
+        addIC(PlayerRightClick.class);
+        addIC(PlayerName.class);
+        addIC(PlayerHand.class);
+        addIC(PlayerMessage.class);
+        addIC(PlayerValueInt.class);
 
         // Item IC's
-        addIC(MC01IT.class);
-        addIC(MC02IT.class);
-        addIC(MC03IT.class);
-        addIC(MC04IT.class);
-        addIC(MC05IT.class);
+        addIC(ItemID.class);
+        addIC(ItemName.class);
+        addIC(ItemDurability.class);
+        addIC(ItemAmount.class);
+        addIC(ItemBlockSensor.class);
     }
 }
