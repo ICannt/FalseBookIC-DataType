@@ -57,7 +57,8 @@ public class MC002S extends BaseDataChip {
                 out = def + inputRight;
             }
         }
-
-        this.outputData(new StringData(out), signBlock, 2);
+        
+        if (out != null)
+        	this.outputData(new StringData(out), signBlock, 2);
     }
 }
