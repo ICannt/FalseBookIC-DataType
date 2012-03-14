@@ -11,28 +11,29 @@ import com.grover.mingebag.ic.ItemData;
 import com.grover.mingebag.ic.NumberData;
 
 public class MC03IT extends BaseDataChip {
-	public MC03IT() {
-		this.ICName = "ITEM DURABILITY";
-		this.ICNumber = "[MC03IT]";
-		setICGroup(ICGroup.CUSTOM_0);
-		this.chipState = new BaseChip(true, false, false, "Item", "", "");
-		this.chipState.setOutputs("Int", "", "");
-		this.chipState.setLines("", "");
-		this.ICDescription = "This pulses the item durability";
-	}
 
+    public MC03IT() {
+        this.ICName = "ITEM DURABILITY";
+        this.ICNumber = "[MC03IT]";
+        setICGroup(ICGroup.CUSTOM_0);
+        this.chipState = new BaseChip(true, false, false, "Item", "", "");
+        this.chipState.setOutputs("Int", "", "");
+        this.chipState.setLines("", "");
+        this.ICDescription = "This pulses the item durability";
+    }
 
-	public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-		if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
-			BaseData data = getData(signBlock);
-			if(data.getType() == DataTypes.ITEM) {
-				ItemData item = (ItemData) data;
-				
-				if(item.getItem() == null)
-					return;
-				
-				this.outputData(new NumberData(item.getItem().getDurability()), signBlock, 2);
-			}
-		}
-	}
+    public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
+        if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
+            BaseData data = getData(signBlock);
+            if (data.getType() == DataTypes.ITEM) {
+                ItemData item = (ItemData) data;
+
+                if (item.getItem() == null) {
+                    return;
+                }
+
+                this.outputData(new NumberData(item.getItem().getDurability()), signBlock, 2);
+            }
+        }
+    }
 }

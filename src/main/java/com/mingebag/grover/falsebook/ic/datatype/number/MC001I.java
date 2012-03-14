@@ -8,6 +8,7 @@ import com.grover.mingebag.ic.NumberData;
 import org.bukkit.block.Sign;
 
 public class MC001I extends BaseDataChip {
+
     public MC001I() {
         this.ICName = "INT OUTPUT";
         this.ICNumber = "[MC001I]";
@@ -19,15 +20,14 @@ public class MC001I extends BaseDataChip {
     }
 
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-        if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
-            
+        if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
+
             int value = 0;
             try {
                 value = Integer.parseInt(signBlock.getLine(3));
+            } catch (Exception e) {
             }
-            catch(Exception e) {
-            }
-            
+
             NumberData data = new NumberData(value);
             this.outputData(data, signBlock, 2);
         }

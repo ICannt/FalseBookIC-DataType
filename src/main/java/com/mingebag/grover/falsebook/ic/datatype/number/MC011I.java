@@ -9,6 +9,7 @@ import com.grover.mingebag.ic.*;
 import org.bukkit.block.Sign;
 
 public class MC011I extends BaseDataChip {
+
     public MC011I() {
         this.ICName = "RANDOM";
         this.ICNumber = "[MC011I]";
@@ -18,18 +19,19 @@ public class MC011I extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "Generates a random number between 0 and the input";
     }
-    
+
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-        
-        if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
+
+        if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
             BaseData data = this.getData(signBlock);
-            
-            if(data == null)
-            	return;
-            
-            if(data.getType() == DataTypes.NUMBER) {
-            	int rand = new Random().nextInt(((NumberData) data).getInt());
-            	outputData(new NumberData(rand), signBlock, 2);
+
+            if (data == null) {
+                return;
+            }
+
+            if (data.getType() == DataTypes.NUMBER) {
+                int rand = new Random().nextInt(((NumberData) data).getInt());
+                outputData(new NumberData(rand), signBlock, 2);
             }
         }
     }

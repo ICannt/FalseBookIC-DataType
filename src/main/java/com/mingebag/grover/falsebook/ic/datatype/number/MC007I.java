@@ -10,6 +10,7 @@ import com.grover.mingebag.ic.NumberData;
 import org.bukkit.block.Sign;
 
 public class MC007I extends BaseDataChip {
+
     public MC007I() {
         this.ICName = "MUL";
         this.ICNumber = "[MC007I]";
@@ -19,23 +20,23 @@ public class MC007I extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "Left mul Right.";
     }
-    
+
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-        
-        if((currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow()) || 
-                currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
+
+        if ((currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow())
+                || currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
             BaseData dataA = this.getDataLeft(signBlock);
             BaseData dataB = this.getDataRight(signBlock);
-            
-            if(dataA != null && dataB != null &&
-                    dataA.getType() == DataTypes.NUMBER &&
-                    dataB.getType() == DataTypes.NUMBER) {
-                int a = ((NumberData)dataA).getInt();
-                int b = ((NumberData)dataB).getInt();
-                
+
+            if (dataA != null && dataB != null
+                    && dataA.getType() == DataTypes.NUMBER
+                    && dataB.getType() == DataTypes.NUMBER) {
+                int a = ((NumberData) dataA).getInt();
+                int b = ((NumberData) dataB).getInt();
+
                 int c = a * b;
                 NumberData output = new NumberData(c);
-                
+
                 this.outputData(output, signBlock, 2);
             }
         }

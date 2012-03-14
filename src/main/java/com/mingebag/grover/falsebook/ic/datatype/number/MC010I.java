@@ -7,6 +7,7 @@ import com.grover.mingebag.ic.*;
 import org.bukkit.block.Sign;
 
 public class MC010I extends BaseDataChip {
+
     public MC010I() {
         this.ICName = "CAST";
         this.ICNumber = "[MC010I]";
@@ -16,36 +17,31 @@ public class MC010I extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "Tries to cast to Int.";
     }
-    
+
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-        
-        if(currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
+
+        if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
             BaseData data = this.getData(signBlock);
-            
+
             NumberData output = null;
-            if(data != null) {
+            if (data != null) {
                 try {
-                    if(data.getType() == DataTypes.NUMBER) {
-                        output = new NumberData(((NumberData)data).getInt());
-                    }
-                    else if(data.getType() == DataTypes.STRING) {
-                        String str = ((StringData)data).getString();
+                    if (data.getType() == DataTypes.NUMBER) {
+                        output = new NumberData(((NumberData) data).getInt());
+                    } else if (data.getType() == DataTypes.STRING) {
+                        String str = ((StringData) data).getString();
                         output = new NumberData(Integer.parseInt(str));
-                    }
-                    else if(data.getType() == DataTypes.PLAYER) {
-                        PlayerData pData = (PlayerData)data;
+                    } else if (data.getType() == DataTypes.PLAYER) {
+                        PlayerData pData = (PlayerData) data;
                         output = new NumberData(pData.getPlayer().getEntityId());
-                    }
-                    else if(data.getType() == DataTypes.ITEM) {
-                        ItemData iData = (ItemData)data;
+                    } else if (data.getType() == DataTypes.ITEM) {
+                        ItemData iData = (ItemData) data;
                         output = new NumberData(iData.getItem().getTypeId());
                     }
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     output = new NumberData(1);
                 }
-            }
-            else {
+            } else {
                 output = new NumberData(1);
             }
             this.outputData(output, signBlock, 2);

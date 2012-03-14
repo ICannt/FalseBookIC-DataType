@@ -7,6 +7,7 @@ import com.grover.mingebag.ic.*;
 import org.bukkit.block.Sign;
 
 public class MC009I extends BaseDataChip {
+
     public MC009I() {
         this.ICName = "MOD";
         this.ICNumber = "[MC009I]";
@@ -16,27 +17,26 @@ public class MC009I extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "Left mod Right.";
     }
-    
+
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
-        
-        if((currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow()) || 
-                currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
+
+        if ((currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow())
+                || currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
             BaseData dataA = this.getDataLeft(signBlock);
             BaseData dataB = this.getDataRight(signBlock);
-            
-            if(dataA != null && dataB != null &&
-                    dataA.getType() == DataTypes.NUMBER &&
-                    dataB.getType() == DataTypes.NUMBER) {
-                int a = ((NumberData)dataA).getInt();
-                int b = ((NumberData)dataB).getInt();
-                
+
+            if (dataA != null && dataB != null
+                    && dataA.getType() == DataTypes.NUMBER
+                    && dataB.getType() == DataTypes.NUMBER) {
+                int a = ((NumberData) dataA).getInt();
+                int b = ((NumberData) dataB).getInt();
+
                 try {
                     int c = a % b;
                     NumberData output = new NumberData(c);
 
                     this.outputData(output, signBlock, 2);
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     StringData output = new StringData("Bad number.");
 
                     this.outputData(output, signBlock, 2);

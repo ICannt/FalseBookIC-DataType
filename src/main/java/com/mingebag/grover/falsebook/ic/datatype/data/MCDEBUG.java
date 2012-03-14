@@ -7,6 +7,7 @@ import com.grover.mingebag.ic.*;
 import org.bukkit.block.Sign;
 
 public class MCDEBUG extends BaseDataChip {
+
     public MCDEBUG() {
         this.ICName = "DEBUG VALUE";
         this.ICNumber = "[MCDEBUG]";
@@ -20,40 +21,35 @@ public class MCDEBUG extends BaseDataChip {
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
         if (currentInputs.isInputOneHigh() != previousInputs.isInputOneHigh()) {
             BaseData data = this.getData(signBlock);
-            
+
             if (data == null) {
                 signBlock.setLine(2, currentInputs.isInputOneHigh() ? "true" : "false");
                 signBlock.setLine(3, "");
-            }
-            else if(data.getType() == DataTypes.NUMBER) {
-                NumberData nData = (NumberData)data;
+            } else if (data.getType() == DataTypes.NUMBER) {
+                NumberData nData = (NumberData) data;
                 signBlock.setLine(2, "n=" + nData.getInt());
                 signBlock.setLine(3, "");
-            }
-            else if(data.getType() == DataTypes.STRING) {
-                StringData sData = (StringData)data;
+            } else if (data.getType() == DataTypes.STRING) {
+                StringData sData = (StringData) data;
                 String str = "s=" + sData.getString();
                 int len = str.length();
-                
+
                 signBlock.setLine(2, str.substring(0, len));
-                if(len > 15) {
+                if (len > 15) {
                     signBlock.setLine(3, str.substring(15, len));
-                }
-                else {
+                } else {
                     signBlock.setLine(3, "");
                 }
-            }
-            else if(data.getType() == DataTypes.PLAYER) {
-                PlayerData nData = (PlayerData)data;
+            } else if (data.getType() == DataTypes.PLAYER) {
+                PlayerData nData = (PlayerData) data;
                 signBlock.setLine(2, "p=" + nData.getPlayer().getName());
                 signBlock.setLine(3, "");
-            }
-            else if(data.getType() == DataTypes.ITEM) {
-                ItemData iData = (ItemData)data;
+            } else if (data.getType() == DataTypes.ITEM) {
+                ItemData iData = (ItemData) data;
                 signBlock.setLine(2, "item=" + iData.getItem().getType().toString());
                 signBlock.setLine(3, "");
             }
-            
+
             signBlock.update(true);
         }
     }
