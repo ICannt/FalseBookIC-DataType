@@ -16,8 +16,8 @@ import com.grover.mingebag.ic.PlayerData;
 public class PlayerValueInt extends BaseDataChip {
 
     public PlayerValueInt() {
-        this.ICName = "PLAYER VALUE INT";
-        this.ICNumber = "[MC005P]";
+        this.ICName = "Player Value int";
+        this.ICNumber = "ic.player.value";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, false, false, "Player", "", "");
         this.chipState.setOutputs("Int", "", "");
