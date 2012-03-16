@@ -19,7 +19,7 @@ public class StringSwitch extends BaseDataChip {
         this.ICName = "String Switch";
         this.ICNumber = "ic.s.switch";
         setICGroup(ICGroup.CUSTOM_0);
-        this.chipState = new BaseChip(true, false, false, "Datatype", "", "");
+        this.chipState = new BaseChip(true, false, false, "Int", "", "");
         this.chipState.setOutputs("String", "", "");
         this.chipState.setLines("", "");
         this.ICDescription = "If int input matches line 3, output string from line 4; otherwise output int.";
@@ -46,8 +46,6 @@ public class StringSwitch extends BaseDataChip {
                 NumberData nData = (NumberData) data;
                 if (signBlock.getLine(2).equals(Integer.toString(nData.getInt()))) {
                 	this.outputData(new StringData(signBlock.getLine(3)), signBlock, 2);
-                } else {
-                	this.outputData(nData, signBlock, 2);
                 }
             }
 
