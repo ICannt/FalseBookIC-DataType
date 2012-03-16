@@ -25,7 +25,7 @@ public class StringCombine extends BaseDataChip {
         String inputLeft = null;
         String inputRight = null;
         String out = null;
-        String def = signBlock.getLine(3);
+        String def = signBlock.getLine(2);
 
         if (currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow()) {
             BaseData dataLeft = getDataLeft(signBlock);
