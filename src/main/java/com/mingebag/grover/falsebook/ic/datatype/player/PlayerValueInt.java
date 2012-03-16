@@ -26,7 +26,7 @@ public class PlayerValueInt extends BaseDataChip {
     }
 
     public void checkCreation(SignChangeEvent event) {
-        String value = event.getLine(3).toUpperCase();
+        String value = event.getLine(2).toUpperCase();
         if (value.length() > 0) {
             if ((value.equals("HEALTH") || value.equals("XP") || value.equals("LEVEL") || value.equals("HUNGER"))) {
                 return;
@@ -40,7 +40,7 @@ public class PlayerValueInt extends BaseDataChip {
             BaseData data = getData(signBlock);
             if (data.getType() == DataTypes.PLAYER) {
                 PlayerData pdata = (PlayerData) data;
-                String value = signBlock.getLine(3).toUpperCase();
+                String value = signBlock.getLine(2).toUpperCase();
 
                 if (value.length() > 0) {
 
