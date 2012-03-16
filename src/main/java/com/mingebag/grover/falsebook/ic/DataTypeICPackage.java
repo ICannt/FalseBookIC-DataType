@@ -38,6 +38,7 @@ public class DataTypeICPackage extends ExternalICPackage {
 
         // String IC's
         addIC(StringCast.class);
+        addIC(StringColour.class);
         addIC(StringCombine.class);
         addIC(StringNote.class);
         addIC(StringOut.class);

@@ -26,7 +26,7 @@ public class StringOut extends BaseDataChip {
         if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
             Sign ic = signBlocks.get(0);
             signBlocks.remove(0);
-            String string = ic.getLine(3);
+            String string = ic.getLine(2) + ic.getLine(3);
 
             for (int i = 0; i < signBlocks.size(); i++) {
                 Sign sign = signBlocks.get(i);
