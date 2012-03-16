@@ -1,52 +1,48 @@
 package com.mingebag.grover.falsebook.ic.datatype.string;
 
+import org.bukkit.ChatColor;
 import org.bukkit.block.Sign;
+import org.bukkit.event.block.SignChangeEvent;
+
 import com.bukkit.gemo.FalseBook.IC.ICs.BaseChip;
 import com.bukkit.gemo.FalseBook.IC.ICs.ICGroup;
 import com.bukkit.gemo.FalseBook.IC.ICs.InputState;
+import com.bukkit.gemo.utils.SignUtils;
 import com.grover.mingebag.ic.BaseData;
 import com.grover.mingebag.ic.BaseDataChip;
 import com.grover.mingebag.ic.DataTypes;
-import com.grover.mingebag.ic.ItemData;
-import com.grover.mingebag.ic.NumberData;
-import com.grover.mingebag.ic.PlayerData;
 import com.grover.mingebag.ic.StringData;
 
 public class StringCast extends BaseDataChip {
 
     public StringCast() {
-        this.ICName = "Cast String";
-        this.ICNumber = "ic.string.cast";
+        this.ICName = "Colour String";
+        this.ICNumber = "ic.s.colour";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, false, false, "Datatype", "", "");
         this.chipState.setOutputs("String", "", "");
         this.chipState.setLines("", "");
-        this.ICDescription = "This takes a datatype and attempts to cast it to a string";
+        this.ICDescription = "This takes a string and colours it";
+    }
+    
+    public void checkCreation(SignChangeEvent event) {
+    	if(ChatColor.valueOf(event.getLine(2)) == null) {
+    		SignUtils.cancelSignCreation(event);
+    	}
     }
 
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
         if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
             BaseData data = getData(signBlock);
-            String out = null;
+            
+            ChatColor colour = ChatColor.valueOf(signBlock.getLine(2));
+            if(colour == null)
+            	return;
+            			
+            if (data.getType() != DataTypes.STRING)
+                return;
 
-            if (data.getType() == DataTypes.NUMBER) {
-                NumberData nData = (NumberData) data;
-                out = Integer.toString(nData.getInt());
-            }
-
-            if (data.getType() == DataTypes.ITEM) {
-                ItemData iData = (ItemData) data;
-                out = iData.getItem().getType().name();
-            }
-
-            if (data.getType() == DataTypes.PLAYER) {
-                PlayerData pData = (PlayerData) data;
-                out = pData.getPlayer().getName();
-            }
-
-            if (out != null) {
-                this.outputData(new StringData(out), signBlock, 2);
-            }
+            this.outputData(new StringData(colour + ((StringData) data).getString()), signBlock, 2);
         }
     }
 }

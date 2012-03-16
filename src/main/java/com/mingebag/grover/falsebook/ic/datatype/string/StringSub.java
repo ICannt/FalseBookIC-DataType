@@ -10,7 +10,7 @@ public class StringSub extends BaseDataChip {
 
     public StringSub() {
         this.ICName = "Sub-String";
-        this.ICNumber = "ic.string.sub";
+        this.ICNumber = "ic.s.sub";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, true, true, "String", "Index", "Count");
         this.chipState.setOutputs("String", "", "");

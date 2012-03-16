@@ -13,7 +13,7 @@ public class StringCombine extends BaseDataChip {
 
     public StringCombine() {
         this.ICName = "String Combine";
-        this.ICNumber = "ic.string.comb";
+        this.ICNumber = "ic.s.comb";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(false, true, true, "String", "String", "String");
         this.chipState.setOutputs("String", "", "");

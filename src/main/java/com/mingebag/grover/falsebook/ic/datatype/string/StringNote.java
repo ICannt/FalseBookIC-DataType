@@ -16,7 +16,7 @@ public class StringNote extends BaseDataChip {
 
     public StringNote() {
         this.ICName = "Play note";
-        this.ICNumber = "ic.string.note";
+        this.ICNumber = "ic.s.note";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, false, false, "String", "", "");
         this.chipState.setOutputs("", "", "");

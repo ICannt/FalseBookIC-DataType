@@ -13,7 +13,7 @@ public class StringOut extends BaseDataChip {
 
     public StringOut() {
         this.ICName = "String output";
-        this.ICNumber = "ic.string.out";
+        this.ICNumber = "ic.s.out";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, false, false, "Clock", "", "");
         this.chipState.setOutputs("String", "", "");
