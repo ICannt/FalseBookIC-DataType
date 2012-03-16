@@ -27,7 +27,7 @@ public class StringCombine extends BaseDataChip {
         String out = null;
         String def = signBlock.getLine(2);
 
-        if (currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow()) {
+        if (currentInputs.isInputTwoHigh()) {
             BaseData dataLeft = getDataLeft(signBlock);
             if (dataLeft != null) {
                 if (dataLeft.getType() == DataTypes.STRING) {
@@ -36,7 +36,7 @@ public class StringCombine extends BaseDataChip {
             }
         }
 
-        if (currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
+        if (currentInputs.isInputThreeHigh()) {
             BaseData dataRight = getDataRight(signBlock);
             if (dataRight != null) {
                 if (dataRight.getType() == DataTypes.STRING) {
