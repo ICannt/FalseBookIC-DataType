@@ -43,6 +43,7 @@ public class DataTypeICPackage extends ExternalICPackage {
         addIC(StringNote.class);
         addIC(StringOut.class);
         addIC(StringSub.class);
+        addIC(StringSwitch.class);
 
 
         // Player IC's
