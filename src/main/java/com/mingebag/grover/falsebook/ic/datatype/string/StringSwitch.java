@@ -17,7 +17,7 @@ public class StringSwitch extends BaseDataChip {
 
     public StringSwitch() {
         this.ICName = "String Switch";
-        this.ICNumber = "ic.s.cast";
+        this.ICNumber = "ic.s.switch";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, false, false, "Datatype", "", "");
         this.chipState.setOutputs("String", "", "");
