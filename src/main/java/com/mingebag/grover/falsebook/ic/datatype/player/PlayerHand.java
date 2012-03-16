@@ -18,11 +18,8 @@ public class PlayerHand extends BaseDataChip {
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(true, false, false, "Player", "", "");
         this.chipState.setOutputs("Item", "", "");
-        this.chipState = new BaseChip(false, true, true, "", "player", "string");
-        this.chipState.setOutputs("", "", "");
         this.chipState.setLines("", "");
         this.ICDescription = "This pulses the item the player has in his hand";
-        this.ICDescription = "This sends a message to the player";
     }
 
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {

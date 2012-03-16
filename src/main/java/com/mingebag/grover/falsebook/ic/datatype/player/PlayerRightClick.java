@@ -20,6 +20,7 @@ public class PlayerRightClick extends BaseDataChip {
         this.ICDescription = "Gets the player who right clicked on the IC";
     }
 
+
     public void onRightClick(Player player, Sign signBlock) {
         this.outputData(new PlayerData(player), signBlock, 2);
     }
