@@ -16,6 +16,7 @@ public class DataTypeICPackage extends ExternalICPackage {
         // DataType IC's
         addIC(DataCompare.class);
         addIC(DataDebug.class);
+        addIC(DataDebugMsg.class);
         addIC(DataDelay.class);
         addIC(DataPulse.class);
         addIC(DataRepeat.class);
