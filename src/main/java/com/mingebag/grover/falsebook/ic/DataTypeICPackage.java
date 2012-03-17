@@ -29,10 +29,13 @@ public class DataTypeICPackage extends ExternalICPackage {
         addIC(IntBinaryXOR.class);
         addIC(IntCast.class);
         addIC(IntDivide.class);
+        addIC(IntHighest.class);
+        addIC(IntLowest.class);
         addIC(IntMod.class);
         addIC(IntMultiply.class);
         addIC(IntOut.class);
         addIC(IntRandom.class);
+        addIC(IntRange.class);
         addIC(IntSign.class);
         addIC(IntSub.class);
 
