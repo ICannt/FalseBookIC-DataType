@@ -13,7 +13,7 @@ public class StringCombine extends BaseDataChip {
 
     public StringCombine() {
         this.ICName = "String Combine";
-        this.ICNumber = "ic.s.comb";
+        this.ICNumber = "ic.s.combine";
         setICGroup(ICGroup.CUSTOM_0);
         this.chipState = new BaseChip(false, true, true, "String", "String", "String");
         this.chipState.setOutputs("String", "", "");
@@ -27,16 +27,15 @@ public class StringCombine extends BaseDataChip {
         String out = null;
         String def = signBlock.getLine(2);
 
-        if (currentInputs.isInputTwoHigh()) {
+        if (currentInputs.isInputTwoHigh() || currentInputs.isInputThreeHigh()) {
+        	
             BaseData dataLeft = getDataLeft(signBlock);
             if (dataLeft != null) {
                 if (dataLeft.getType() == DataTypes.STRING) {
                     inputLeft = ((StringData) dataLeft).getString();
                 }
             }
-        }
-
-        if (currentInputs.isInputThreeHigh()) {
+            
             BaseData dataRight = getDataRight(signBlock);
             if (dataRight != null) {
                 if (dataRight.getType() == DataTypes.STRING) {
@@ -44,6 +43,7 @@ public class StringCombine extends BaseDataChip {
                 }
             }
         }
+
 
         if (inputLeft != null && inputRight != null) {
             out = inputLeft + inputRight;

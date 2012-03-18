@@ -63,6 +63,7 @@ public class DataTypeICPackage extends ExternalICPackage {
         addIC(ItemDurability.class);
         addIC(ItemID.class);
         addIC(ItemName.class);
+        
 
     }
 }
