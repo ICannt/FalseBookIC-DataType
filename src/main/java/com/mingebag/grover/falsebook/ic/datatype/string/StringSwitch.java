@@ -24,28 +24,28 @@ public class StringSwitch extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "If int input matches line 3, output string from line 4; otherwise output int.";
     }
-    
+
     public void checkCreation(SignChangeEvent event) {
-    	try {
-    		Integer.parseInt(event.getLine(2));
-    	} catch (Exception e) {
-    		SignUtils.cancelSignCreation(event, "Line 3 must be a valid Integer!");
-    	}
-    	
-    	if(event.getLine(3).length() == 0) {
-    		SignUtils.cancelSignCreation(event, "Line 4 must be a string!");
-    	}
+        try {
+            Integer.parseInt(event.getLine(2));
+        } catch (Exception e) {
+            SignUtils.cancelSignCreation(event, "Line 3 must be a valid Integer!");
+        }
+
+        if (event.getLine(3).length() == 0) {
+            SignUtils.cancelSignCreation(event, "Line 4 must be a string!");
+        }
     }
 
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
         if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
-        	
+
             BaseData data = getData(signBlock);
 
             if (data.getType() == DataTypes.NUMBER) {
                 NumberData nData = (NumberData) data;
                 if (signBlock.getLine(2).equals(Integer.toString(nData.getInt()))) {
-                	this.outputData(new StringData(signBlock.getLine(3)), signBlock, 2);
+                    this.outputData(new StringData(signBlock.getLine(3)), signBlock, 2);
                 }
             }
 

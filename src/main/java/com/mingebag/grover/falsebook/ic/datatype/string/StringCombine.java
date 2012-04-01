@@ -28,14 +28,14 @@ public class StringCombine extends BaseDataChip {
         String def = signBlock.getLine(2);
 
         if (currentInputs.isInputTwoHigh() || currentInputs.isInputThreeHigh()) {
-        	
+
             BaseData dataLeft = getDataLeft(signBlock);
             if (dataLeft != null) {
                 if (dataLeft.getType() == DataTypes.STRING) {
                     inputLeft = ((StringData) dataLeft).getString();
                 }
             }
-            
+
             BaseData dataRight = getDataRight(signBlock);
             if (dataRight != null) {
                 if (dataRight.getType() == DataTypes.STRING) {
@@ -57,8 +57,9 @@ public class StringCombine extends BaseDataChip {
                 out = def + inputRight;
             }
         }
-        
-        if (out != null)
-        	this.outputData(new StringData(out), signBlock, 2);
+
+        if (out != null) {
+            this.outputData(new StringData(out), signBlock, 2);
+        }
     }
 }

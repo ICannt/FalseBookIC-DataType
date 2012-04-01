@@ -28,7 +28,7 @@ public class DataDebugMsg extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "Shows value.";
     }
-    
+
     public void checkCreation(SignChangeEvent event) {
         event.setLine(2, event.getPlayer().getName());
         event.setLine(3, "");
@@ -40,45 +40,45 @@ public class DataDebugMsg extends BaseDataChip {
 
             List<Player> players = signBlock.getWorld().getPlayers();
             Player player = null;
-            for(Player p : players) {
-                if(p.getName().compareToIgnoreCase(signBlock.getLine(2)) == 0) {
+            for (Player p : players) {
+                if (p.getName().compareToIgnoreCase(signBlock.getLine(2)) == 0) {
                     player = p;
                 }
             }
-            
-            if(player == null) {
+
+            if (player == null) {
                 return;
             }
-            
+
             if (data == null) {
-                player.sendMessage(ChatColor.GOLD + 
-                        signBlock.getLine(1) +
-                        ": b " + 
-                        (currentInputs.isInputOneHigh() ? "true" : "false"));
+                player.sendMessage(ChatColor.GOLD
+                        + signBlock.getLine(1)
+                        + ": b "
+                        + (currentInputs.isInputOneHigh() ? "true" : "false"));
             } else if (data.getType() == DataTypes.NUMBER) {
                 NumberData nData = (NumberData) data;
-                player.sendMessage(ChatColor.GOLD + 
-                        signBlock.getLine(1) +
-                        ": n " + 
-                        nData.getInt());
+                player.sendMessage(ChatColor.GOLD
+                        + signBlock.getLine(1)
+                        + ": n "
+                        + nData.getInt());
             } else if (data.getType() == DataTypes.STRING) {
                 StringData sData = (StringData) data;
-                player.sendMessage(ChatColor.GOLD + 
-                        signBlock.getLine(1) +
-                        ": s " + 
-                        sData.getString());
+                player.sendMessage(ChatColor.GOLD
+                        + signBlock.getLine(1)
+                        + ": s "
+                        + sData.getString());
             } else if (data.getType() == DataTypes.PLAYER) {
                 PlayerData nData = (PlayerData) data;
-                player.sendMessage(ChatColor.GOLD + 
-                        signBlock.getLine(1) +
-                        ": p " + 
-                        nData.getPlayer().getName());
+                player.sendMessage(ChatColor.GOLD
+                        + signBlock.getLine(1)
+                        + ": p "
+                        + nData.getPlayer().getName());
             } else if (data.getType() == DataTypes.ITEM) {
                 ItemData iData = (ItemData) data;
-                player.sendMessage(ChatColor.GOLD + 
-                        signBlock.getLine(1) +
-                        ": i " + 
-                        iData.getItem().getType().toString());
+                player.sendMessage(ChatColor.GOLD
+                        + signBlock.getLine(1)
+                        + ": i "
+                        + iData.getItem().getType().toString());
             }
         }
     }

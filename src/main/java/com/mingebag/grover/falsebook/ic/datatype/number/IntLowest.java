@@ -26,23 +26,26 @@ public class IntLowest extends BaseDataChip {
         if ((currentInputs.isInputTwoHigh() && previousInputs.isInputTwoLow()) || currentInputs.isInputThreeHigh() && previousInputs.isInputThreeLow()) {
             BaseData dataLeft = this.getDataLeft(signBlock);
             BaseData dataRight = this.getDataRight(signBlock);
-            if (dataLeft == null || dataRight == null) 
-            	return;
-            
-            if (dataLeft.getType() != DataTypes.NUMBER || dataRight.getType() != DataTypes.NUMBER)
-            	return;
-            
+            if (dataLeft == null || dataRight == null) {
+                return;
+            }
+
+            if (dataLeft.getType() != DataTypes.NUMBER || dataRight.getType() != DataTypes.NUMBER) {
+                return;
+            }
+
             int left = ((NumberData) dataLeft).getInt();
             int right = ((NumberData) dataRight).getInt();
-            
+
             if (left <= right) {
-            	this.outputData(new NumberData(left), signBlock, 2);
-            	return;
+                this.outputData(new NumberData(left), signBlock, 2);
+                return;
             }
-            
-            if (right < left)
-            	this.outputData(new NumberData(right), signBlock, 2);
-                
+
+            if (right < left) {
+                this.outputData(new NumberData(right), signBlock, 2);
+            }
+
         }
     }
 }

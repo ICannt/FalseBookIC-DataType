@@ -22,13 +22,13 @@ public class IntRange extends BaseDataChip {
         this.chipState.setLines("Range start", "Range end");
         this.ICDescription = "Outputs the input if in range.";
     }
-    
+
     public void checkCreation(SignChangeEvent event) {
         try {
-        	Integer.parseInt(event.getLine(2));
-        	Integer.parseInt(event.getLine(3));
-        } catch(Exception e) {
-        	SignUtils.cancelSignCreation(event, "Line 3 and 4 must be integers.");
+            Integer.parseInt(event.getLine(2));
+            Integer.parseInt(event.getLine(3));
+        } catch (Exception e) {
+            SignUtils.cancelSignCreation(event, "Line 3 and 4 must be integers.");
         }
     }
 
@@ -36,28 +36,30 @@ public class IntRange extends BaseDataChip {
 
         if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
             BaseData data = this.getData(signBlock);
-            
-            if (data == null) 
-            	return;
-            
-            if (data.getType() != DataTypes.NUMBER)
-            	return;
-            
+
+            if (data == null) {
+                return;
+            }
+
+            if (data.getType() != DataTypes.NUMBER) {
+                return;
+            }
+
             int value = ((NumberData) data).getInt();
             int start;
             int end;
-            
+
             try {
-            	start = Integer.parseInt(signBlock.getLine(2));
-            	end = Integer.parseInt(signBlock.getLine(3));
-            } catch(Exception e) {
-            	return;
+                start = Integer.parseInt(signBlock.getLine(2));
+                end = Integer.parseInt(signBlock.getLine(3));
+            } catch (Exception e) {
+                return;
             }
-            
-            if(value >= start && value <= end) {
-            	this.outputData(new NumberData(value), signBlock, 2);
+
+            if (value >= start && value <= end) {
+                this.outputData(new NumberData(value), signBlock, 2);
             }
-                
+
         }
     }
 }

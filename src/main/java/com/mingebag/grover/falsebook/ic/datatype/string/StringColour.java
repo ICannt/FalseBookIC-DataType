@@ -24,32 +24,34 @@ public class StringColour extends BaseDataChip {
         this.chipState.setLines("", "");
         this.ICDescription = "This takes a string and colours it";
     }
-    
+
     public void checkCreation(SignChangeEvent event) {
-    	try {
-    		ChatColor.valueOf(event.getLine(2).toUpperCase());
-    	} catch (Exception e) {
-    		SignUtils.cancelSignCreation(event);
-    	}
+        try {
+            ChatColor.valueOf(event.getLine(2).toUpperCase());
+        } catch (Exception e) {
+            SignUtils.cancelSignCreation(event);
+        }
     }
 
     public void Execute(Sign signBlock, InputState currentInputs, InputState previousInputs) {
         if (currentInputs.isInputOneHigh() && previousInputs.isInputOneLow()) {
             BaseData data = getData(signBlock);
             ChatColor colour = null;
-            
-        	try {
-        		colour = ChatColor.valueOf(signBlock.getLine(2).toUpperCase());
-        	} catch (Exception e) {
-        		return;
-        	}
-            
-        	if(colour == null)
-        		return;
-            
-            			
-            if (data.getType() != DataTypes.STRING)
+
+            try {
+                colour = ChatColor.valueOf(signBlock.getLine(2).toUpperCase());
+            } catch (Exception e) {
                 return;
+            }
+
+            if (colour == null) {
+                return;
+            }
+
+
+            if (data.getType() != DataTypes.STRING) {
+                return;
+            }
 
             this.outputData(new StringData(colour + ((StringData) data).getString()), signBlock, 2);
         }

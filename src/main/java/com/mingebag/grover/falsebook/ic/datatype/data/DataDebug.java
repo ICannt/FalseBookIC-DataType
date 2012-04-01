@@ -45,11 +45,11 @@ public class DataDebug extends BaseDataChip {
 
                 signBlock.setLine(1, str.substring(0, len));
                 if (len > 15) {
-                	if (len > 30) {
-                		signBlock.setLine(3, str.substring(30, len));
-                	} else {
-                		signBlock.setLine(2, str.substring(15, len));
-                	}
+                    if (len > 30) {
+                        signBlock.setLine(3, str.substring(30, len));
+                    } else {
+                        signBlock.setLine(2, str.substring(15, len));
+                    }
                 } else {
                     signBlock.setLine(2, "");
                     signBlock.setLine(3, "");
